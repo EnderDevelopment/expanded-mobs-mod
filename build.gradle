@@ -1,0 +1,47 @@
+plugins {
+    id 'fabric-loom' version '1.1-SNAPSHOT'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net/'
+    }
+}
+
+extra {
+    apply plugin: 'fabric-loom'
+    loom {
+        minecraftVersion = '1.20.4'
+        mappings = '1.20.4+build.1'
+        runs {
+            client {
+                property 'minecraft.classpath'
+            }
+            server {
+                property 'minecraft.classpath'
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft 'com.mojang:minecraft:1.20.4'
+    mappings 'net.fabricmc:yarn:1.20.4+build.1:v2'
+    modImplementation 'net.fabricmc:fabric-loader:0.14.0'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'minecraft_version', loom.minecraftVersion
+}
+
+jar {
+    from {
+        configurations.compileClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}

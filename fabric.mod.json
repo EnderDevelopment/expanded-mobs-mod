@@ -1,0 +1,20 @@
+{
+    "schemaVersion": 1,
+    "id": "expandedmobsmod",
+    "version": "1.0.0",
+    "name": "Expanded Mobs Mod",
+    "description": "A mod that adds a variety of new mobs, biomes, structures, and a new dimension to Minecraft.",
+    "authors": ["smballard092"],
+    "license": "MIT",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "com.smballard092.expandedmobsmod.ExpandedMobsMod"
+        ]
+    },
+    "mixins": [],
+    "depends": {
+        "fabricloader": ">=0.14.0",
+        "minecraft": ">=1.20.4"
+    }
+}
